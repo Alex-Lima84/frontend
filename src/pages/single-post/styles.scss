@@ -1,0 +1,36 @@
+.single-post-container {
+  display: flex;
+  gap: 50px;
+
+  .content-container {
+    flex: 5;
+
+    img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+  }
+
+  .user-container {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+
+    img {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    span {
+        font-weight: bold;
+    }
+  }
+
+  .menu-container {
+    flex: 2;
+  }
+}
