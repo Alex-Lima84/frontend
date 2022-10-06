@@ -4,6 +4,7 @@ import userImage from "../../assets/images/user-image.png";
 import editLogo from "../../assets/images/edit.png";
 import deleteLogo from "../../assets/images/delete.png";
 import { Link } from "react-router-dom";
+import { Menu } from "../../components/menu";
 
 export const SinglePost = () => {
   return (
@@ -78,10 +79,10 @@ export const SinglePost = () => {
           eligendi vitae labore! Maxime, nostrum necessitatibus eos et mollitia
           autem, libero ea at excepturi consequatur, omnis commodi unde eum
           ullam non perspiciatis assumenda itaque fuga. Quibusdam rem explicabo
-          commodi provident ea aperiam consectetur? Consectetur, velit. 
+          commodi provident ea aperiam consectetur? Consectetur, velit.
         </p>
       </div>
-      <div className="menu-container">m</div>
+      <Menu />
     </div>
   );
 };
