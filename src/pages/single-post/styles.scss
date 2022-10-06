@@ -4,6 +4,9 @@
 
   .content-container {
     flex: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
 
     img {
       width: 100%;
@@ -28,6 +31,27 @@
     span {
         font-weight: bold;
     }
+  }
+
+  .edit-container {
+    display: flex;
+    gap: 5px;
+
+    img {
+      width: 1.2rem;
+      height: 1.2rem;
+      cursor: pointer;
+    }
+  }
+
+  h1 {
+    font-size: 3rem;
+    color:#333;
+  }
+
+  p {
+    text-align: justify;
+    line-height: 1.8rem;
   }
 
   .menu-container {

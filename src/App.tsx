@@ -4,14 +4,14 @@ import {
   Route,
   Outlet,
 } from "react-router-dom";
-import { Footer } from "./components/footer/footer";
-import { Navbar } from "./components/navbar/navbar";
+import { Footer } from "./components/footer";
+import { Navbar } from "./components/navbar";
 
-import { Home } from "./pages/home/home";
-import { Login } from "./pages/login/login";
-import { Register } from "./pages/register/register";
-import { SinglePost } from "./pages/single-post/single-post";
-import { WritePost } from "./pages/write-post/write-post";
+import { Home } from "./pages/home";
+import { Login } from "./pages/login";
+import { Register } from "./pages/register";
+import { SinglePost } from "./pages/single-post";
+import { WritePost } from "./pages/write-post";
 
 import "./styles.scss";
 
