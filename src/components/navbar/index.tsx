@@ -30,7 +30,7 @@ export const Navbar = () => {
           </Link>
           <span>John</span>
           <span>Logout</span>
-          <span className="write-container">
+          <span className="nav-write-container">
             <Link to="write-post">Write</Link>
           </span>
         </div>
