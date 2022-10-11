@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./styles.scss";
 
 export const Register = () => {
@@ -10,17 +10,21 @@ export const Register = () => {
     password: "",
   });
 
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+
   const handleChange = (e: { target: { name: string; value: string } }) => {
     setInputs((previous) => ({ ...previous, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/auth/register", inputs);
-      console.log(res);
-    } catch (error) {
-      console.log(error);
+      await axios.post("/auth/register", inputs);
+      navigate("/login");
+    } catch (error: any) {
+      setError(error.response.data);
     }
   };
 
@@ -50,7 +54,7 @@ export const Register = () => {
           onChange={handleChange}
         />
         <button onClick={handleSubmit}>Cadastro</button>
-        <p>Dados inválidos</p>
+        {error && <p>{error}</p>}
         <span>
           {" "}
           Já possui uma conta? <Link to="/login">Login</Link>
