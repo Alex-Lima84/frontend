@@ -1,28 +1,52 @@
+import { Link, useLocation } from "react-router-dom";
+import { Menu } from "../../components/menu";
+import axios from "axios";
+import { useState, useEffect, useContext } from "react";
+import moment from "moment";
+
 import "./styles.scss";
-import stockImage from "../../assets/images/stock-image.jpg";
+
+// import stockImage from "../../assets/images/stock-image.jpg";
 import userImage from "../../assets/images/user-image.png";
 import editLogo from "../../assets/images/edit.png";
 import deleteLogo from "../../assets/images/delete.png";
-import { Link } from "react-router-dom";
-import { Menu } from "../../components/menu";
+import { AuthContext } from "../../context/authContext";
 
 export const SinglePost = () => {
+  const [post, setPost]: any = useState({});
+  const location = useLocation();
+  const postId = location.pathname.split("/")[2];
+  const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/posts/${postId}`);
+        setPost(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [postId]);
   return (
     <div className="single-post-container">
       <div className="content-container">
-        <img src={stockImage} />
+        <img src={post?.img} alt="" />
         <div className="user-container">
-          <img src={userImage} />
+          <img src={userImage} alt="" />
           <div className="info-container">
-            <span>John</span>
-            <p>Posted 2 days ago</p>
+            <span>{post.username}</span>
+            <p>{moment(post.date).fromNow()}</p>
           </div>
-          <div className="edit-container">
-            <Link to={`/write-post?edit=2`}>
-              <img src={editLogo} />
-            </Link>
-            <img src={deleteLogo} />
-          </div>
+          {currentUser?.username === post?.username && (
+            <div className="edit-container">
+              <Link to={`/write-post?edit=2`}>
+                <img src={editLogo} alt="" />
+              </Link>
+              <img src={deleteLogo} alt="" />
+            </div>
+          )}
         </div>
         <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h1>
         <p>
@@ -86,3 +110,5 @@ export const SinglePost = () => {
     </div>
   );
 };
+
+//Vídeo parou em 1:48:30

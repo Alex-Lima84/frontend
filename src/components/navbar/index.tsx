@@ -1,13 +1,20 @@
 import "./styles.scss";
 import websiteLogo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/authContext";
+import { useContext } from "react";
 
 export const Navbar = () => {
+  const { currentUser, logout } = useContext(AuthContext);
+  console.log(currentUser);
+
   return (
     <div className="navbar">
       <div className="navbar-container">
         <div className="logo-container">
-          <img src={websiteLogo} alt="website logo" />
+          <Link to="/">
+            <img src={websiteLogo} alt="website logo" />
+          </Link>
         </div>
         <div className="links-container">
           <Link className="link" to="/?cat=art">
@@ -28,8 +35,14 @@ export const Navbar = () => {
           <Link className="link" to="/?cat=food">
             <h6>Food</h6>
           </Link>
-          <span>John</span>
-          <span>Logout</span>
+          <span>{currentUser?.username}</span>
+          {currentUser ? (
+            <span onClick={logout}>Logout</span>
+          ) : (
+            <Link className="login-link" to="/login">
+              Login
+            </Link>
+          )}
           <span className="nav-write-container">
             <Link to="write-post">Write</Link>
           </span>
