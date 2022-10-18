@@ -60,7 +60,7 @@ export const SinglePost = () => {
         <h1>{post.title}</h1>
         {post.desc}
       </div>
-      <Menu />
+      <Menu category={post.cat}/>
     </div>
   );
 };

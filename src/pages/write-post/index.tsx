@@ -5,11 +5,18 @@ import { useState } from "react";
 
 export const WritePost = () => {
   const [value, setValue] = useState("");
+  const [title, setTitle] = useState("");
+  const [file, setFile] = useState<any>(null);
+  const [category, setCategory] = useState("");
 
   return (
     <div className="write-container">
       <div className="write-content">
-        <input type="text" placeholder="Title" />
+        <input
+          type="text"
+          placeholder="Title"
+          onChange={(e) => setTitle(e.target.value)}
+        />
         <div className="editor-container">
           <ReactQuill
             className="editor"
@@ -28,7 +35,12 @@ export const WritePost = () => {
           <span>
             <b>Visibility:</b> Public
           </span>
-          <input style={{ display: "none" }} type="file" id="upload-file" />
+          <input
+            onChange={(e: any) => setFile(e.target.files[0])}
+            style={{ display: "none" }}
+            type="file"
+            id="upload-file"
+          />
           <label className="upload-file" htmlFor="upload-file">
             Upload Image
           </label>
@@ -40,27 +52,63 @@ export const WritePost = () => {
         <div className="write-item">
           <h2>Category</h2>
           <div className="cat">
-            <input type="radio" name="cat" value="art" id="art" />
+            <input
+              type="radio"
+              name="cat"
+              value="art"
+              id="art"
+              onChange={(e) => setCategory(e.target.value)}
+            />
             <label htmlFor="art">Art</label>
           </div>
           <div className="cat">
-            <input type="radio" name="cat" value="science" id="science" />
+            <input
+              type="radio"
+              name="cat"
+              value="science"
+              id="science"
+              onChange={(e) => setCategory(e.target.value)}
+            />
             <label htmlFor="science">Science</label>
           </div>
           <div className="cat">
-            <input type="radio" name="cat" value="technology" id="technology" />
+            <input
+              type="radio"
+              name="cat"
+              value="technology"
+              id="technology"
+              onChange={(e) => setCategory(e.target.value)}
+            />
             <label htmlFor="technology">Technology</label>
           </div>
           <div className="cat">
-            <input type="radio" name="cat" value="cinema" id="cinema" />
+            <input
+              type="radio"
+              name="cat"
+              value="cinema"
+              id="cinema"
+              onChange={(e) => setCategory(e.target.value)}
+            />
             <label htmlFor="cinema">Cinema</label>
           </div>
           <div className="cat">
-            <input type="radio" name="cat" value="design" id="design" />
+            <input
+              type="radio"
+              name="cat"
+              value="design"
+              id="design"
+              onChange={(e) => setCategory(e.target.value)}
+            />
             <label htmlFor="design">Design</label>
           </div>
           <div className="cat">
-            <input type="radio" name="cat" value="food" id="food" />
+            <input
+              type="radio"
+              name="cat"
+              value="food"
+              id="food"
+              onChange={(e) => setCategory(e.target.value)}
+            />
             <label htmlFor="food">Food</label>
           </div>
         </div>
